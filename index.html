@@ -1,184 +1,192 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+""<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Loja Dois de Muitos</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f8f8f8;
+      padding: 20px;
+      background-color: #f7f7f7;
     }
-    .carousel-container {
-      overflow: hidden;
-      width: 100%;
-      max-height: 300px;
+    h1 {
+      text-align: center;
     }
     .carousel {
       display: flex;
-      animation: slide 15s infinite;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 10px;
+      background-color: #fff;
+      margin-bottom: 20px;
     }
     .carousel img {
-      width: 100vw;
-      height: auto;
-      object-fit: cover;
-    }
-    @keyframes slide {
-      0% { transform: translateX(0); }
-      33% { transform: translateX(-100vw); }
-      66% { transform: translateX(-200vw); }
-      100% { transform: translateX(0); }
-    }
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px;
-    }
-    .product {
-      background: #fff;
-      border: 1px solid #ccc;
-      margin: 10px;
-      padding: 10px;
-      width: 200px;
-      text-align: center;
+      height: 120px;
+      flex-shrink: 0;
       border-radius: 8px;
     }
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .product {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
     .product img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
-      margin-bottom: 10px;
+      border-radius: 8px;
     }
-    .button {
-      background: #28a745;
-      color: white;
+    .product h3 {
+      margin: 10px 0 5px;
+    }
+    .product p {
+      margin: 0 0 10px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .buttons button {
+      padding: 10px;
       border: none;
-      padding: 8px 12px;
       border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
       cursor: pointer;
+      margin: 5px;
     }
-    .button:hover {
-      background: #218838;
-    }
-    #cesta {
-      padding: 20px;
-      text-align: center;
+    .buttons button:hover {
+      background-color: #45a049;
     }
   </style>
 </head>
 <body>
-  <!-- Carrossel -->
-  <div class="carousel-container">
-    <div class="carousel">
-      <img src="images/promocao1.jpg" alt="Promoção 1">
-      <img src="images/promocao2.jpg" alt="Promoção 2">
-      <img src="images/promocao3.jpg" alt="Promoção 3">
-    </div>
+  <h1>Loja Simples</h1>
+
+  <div class="carousel">
+    <img src="images/aroeira.jpg" alt="Sabonete Aroeira" />
+    <img src="images/babosa.jpg" alt="Sabonete Babosa" />
+    <img src="images/pomada.jpg" alt="Pomada Canela de Velho" />
+    <img src="images/xarope.jpg" alt="Xarope da Vovó" />
+    <img src="images/canela.jpg" alt="Canela em Pau" />
   </div>
 
-  <!-- Lista de Produtos -->
-  <div class="products" id="product-list">
-    <div class="product">
+  <div class="product-list" id="product-list">
+    <div class="product" data-name="Livro Dois de Muitos - Temporada 01" data-price="32.00">
       <h3>Livro Dois de Muitos - Temporada 01</h3>
-      <img src="images/livro_01.jpg" alt="Livro Dois de Muitos">
       <p>R$ 32,00</p>
-      <button class="button" onclick="adicionar('Livro Dois de Muitos - Temporada 01', 32)">Adicionar</button>
+      <button onclick="addToCart(this)">Adicionar</button>
     </div>
-    <div class="product">
+    <div class="product" data-name="Livreto 2dM: Chamado para o Alinhamento" data-price="5.00">
       <h3>Livreto 2dM: Chamado para o Alinhamento</h3>
-      <img src="images/livreto1.jpg" alt="Chamado para o Alinhamento">
       <p>R$ 5,00</p>
-      <button class="button" onclick="adicionar('Chamado para o Alinhamento', 5)">Adicionar</button>
+      <button onclick="addToCart(this)">Adicionar</button>
     </div>
-    <div class="product">
+    <div class="product" data-name="Livreto 2dM: O Reflexo do Que Somos" data-price="5.00">
       <h3>Livreto 2dM: O Reflexo do Que Somos</h3>
-      <img src="images/livreto2.jpg" alt="Reflexo do Que Somos">
       <p>R$ 5,00</p>
-      <button class="button" onclick="adicionar('O Reflexo do Que Somos', 5)">Adicionar</button>
+      <button onclick="addToCart(this)">Adicionar</button>
     </div>
-    <div class="product">
+    <div class="product" data-name="Livreto 2dM: Origem dos Povos e Trilhas" data-price="5.00">
       <h3>Livreto 2dM: Origem dos Povos e Trilhas</h3>
-      <img src="images/livreto3.jpg" alt="Origem dos Povos">
       <p>R$ 5,00</p>
-      <button class="button" onclick="adicionar('Origem dos Povos e Trilhas', 5)">Adicionar</button>
+      <button onclick="addToCart(this)">Adicionar</button>
     </div>
-    <div class="product">
+    <div class="product" data-name="Caderneta de Bolso Borboleta" data-price="12.00">
       <h3>Caderneta de Bolso Borboleta</h3>
-      <img src="images/caderneta.jpg" alt="Caderneta Borboleta">
       <p>R$ 12,00</p>
-      <button class="button" onclick="adicionar('Caderneta de Bolso Borboleta', 12)">Adicionar</button>
+      <button onclick="addToCart(this)">Adicionar</button>
     </div>
-    <div class="product">
-      <h3>Biofertilizante Orgânico</h3>
-      <img src="images/biofert.jpg" alt="Biofertilizante Orgânico">
+    <div class="product" data-name="Biofertilizante Orgânico (Rio Grande da Serra)" data-price="8.00">
+      <h3>Biofertilizante Orgânico (Rio Grande da Serra)</h3>
       <p>R$ 8,00</p>
-      <button class="button" onclick="adicionar('Biofertilizante Orgânico', 8)">Adicionar</button>
+      <button onclick="addToCart(this)">Adicionar</button>
     </div>
-    <div class="product">
+    <div class="product" data-name="Sabonete Aroeira Natural" data-price="9.89">
       <h3>Sabonete Aroeira Natural</h3>
-      <img src="images/aroeira.jpg" alt="Sabonete Aroeira">
       <p>R$ 9,89</p>
-      <button class="button" onclick="adicionar('Sabonete Aroeira Natural', 9.89)">Adicionar</button>
+      <button onclick="addToCart(this)">Adicionar</button>
     </div>
-    <div class="product">
+    <div class="product" data-name="Sabonete Babosa Aloe Vera" data-price="9.89">
       <h3>Sabonete Babosa Aloe Vera</h3>
-      <img src="images/babosa.jpg" alt="Sabonete Babosa">
       <p>R$ 9,89</p>
-      <button class="button" onclick="adicionar('Sabonete Babosa Aloe Vera', 9.89)">Adicionar</button>
+      <button onclick="addToCart(this)">Adicionar</button>
     </div>
-    <div class="product">
+    <div class="product" data-name="Pomada Canela de Velho" data-price="5.89">
       <h3>Pomada Canela de Velho</h3>
-      <img src="images/pomada.jpg" alt="Pomada Canela de Velho">
       <p>R$ 5,89</p>
-      <button class="button" onclick="adicionar('Pomada Canela de Velho', 5.89)">Adicionar</button>
+      <button onclick="addToCart(this)">Adicionar</button>
     </div>
-    <div class="product">
+    <div class="product" data-name="Xarope da Vovó" data-price="13.90">
       <h3>Xarope da Vovó</h3>
-      <img src="images/xarope.jpg" alt="Xarope da Vovó">
       <p>R$ 13,90</p>
-      <button class="button" onclick="adicionar('Xarope da Vovó', 13.90)">Adicionar</button>
+      <button onclick="addToCart(this)">Adicionar</button>
     </div>
-    <div class="product">
+    <div class="product" data-name="Canela em Pau (100g)" data-price="9.90">
       <h3>Canela em Pau (100g)</h3>
-      <img src="images/canela.jpg" alt="Canela em Pau">
       <p>R$ 9,90</p>
-      <button class="button" onclick="adicionar('Canela em Pau (100g)', 9.90)">Adicionar</button>
+      <button onclick="addToCart(this)">Adicionar</button>
     </div>
   </div>
 
-  <div id="cesta">
-    <button class="button" onclick="visualizarCesta()">Visualizar Lista de Compras</button>
-    <p id="mensagem"></p>
+  <div class="buttons">
+    <button onclick="viewCart()">Visualizar Lista de Compras</button>
+    <button onclick="sendEmail()">Enviar por Email</button>
+    <button onclick="contactWhatsApp()">Continuar pelo WhatsApp</button>
   </div>
 
   <script>
-    const cesta = [];
+    const cart = [];
 
-    function adicionar(nome, preco) {
-      cesta.push({ nome, preco });
-      alert(`${nome} adicionado à cesta.`);
+    function addToCart(button) {
+      const product = button.closest('.product');
+      const name = product.getAttribute('data-name');
+      const price = parseFloat(product.getAttribute('data-price'));
+      cart.push({ name, price });
+      alert(name + ' adicionado à cesta!');
     }
 
-    function visualizarCesta() {
-      if (cesta.length === 0) {
+    function viewCart() {
+      if (cart.length === 0) {
         alert('Sua cesta está vazia.');
         return;
       }
+      const list = cart.map(item => `- ${item.name} (R$ ${item.price.toFixed(2)})`).join('\n');
+      const total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+      alert(`Itens na cesta:\n${list}\n\nTotal: R$ ${total}`);
+    }
 
-      let mensagem = 'Sua lista de compras:\n';
-      let total = 0;
-      cesta.forEach(item => {
-        mensagem += `- ${item.nome}: R$ ${item.preco.toFixed(2)}\n`;
-        total += item.preco;
-      });
-      mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
+    function sendEmail() {
+      if (cart.length === 0) {
+        alert('Sua cesta está vazia.');
+        return;
+      }
+      const list = cart.map(item => `- ${item.name} (R$ ${item.price.toFixed(2)})`).join('%0D%0A');
+      const total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+      const subject = 'Pedido da Loja';
+      const body = `Olá,%0D%0AEsses são os produtos que gostaria de adquirir:%0D%0A${list}%0D%0ATotal: R$ ${total}`;
+      window.location.href = `mailto:editifestviseu@gmail.com?subject=${subject}&body=${body}`;
+    }
 
-      const email = 'editifestviseu@gmail.com';
-      const assunto = encodeURIComponent('Lista de Compras');
-      const corpo = encodeURIComponent(mensagem);
-      window.location.href = `mailto:${email}?subject=${assunto}&body=${corpo}`;
+    function contactWhatsApp() {
+      if (cart.length === 0) {
+        alert('Sua cesta está vazia.');
+        return;
+      }
+      const list = cart.map(item => `- ${item.name} (R$ ${item.price.toFixed(2)})`).join('%0A');
+      const total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+      const message = `Olá! Gostaria de saber mais sobre os seguintes itens:%0A${list}%0A%0ATotal: R$ ${total}`;
+      const waUrl = `https://wa.me/?text=${message}`;
+      window.open(waUrl, '_blank');
     }
   </script>
 </body>
