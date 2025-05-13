@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja Dois de Muitos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+    }
+    .carousel-container {
+      overflow: hidden;
+      width: 100%;
+      max-height: 300px;
+    }
+    .carousel {
+      display: flex;
+      animation: slide 15s infinite;
+    }
+    .carousel img {
+      width: 100vw;
+      height: auto;
+      object-fit: cover;
+    }
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      33% { transform: translateX(-100vw); }
+      66% { transform: translateX(-200vw); }
+      100% { transform: translateX(0); }
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+    }
+    .product {
+      background: #fff;
+      border: 1px solid #ccc;
+      margin: 10px;
+      padding: 10px;
+      width: 200px;
+      text-align: center;
+      border-radius: 8px;
+    }
+    .product img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    .button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background: #218838;
+    }
+    #cesta {
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Carrossel -->
+  <div class="carousel-container">
+    <div class="carousel">
+      <img src="images/promocao1.jpg" alt="Promoção 1">
+      <img src="images/promocao2.jpg" alt="Promoção 2">
+      <img src="images/promocao3.jpg" alt="Promoção 3">
+    </div>
+  </div>
+
+  <!-- Lista de Produtos -->
+  <div class="products" id="product-list">
+    <div class="product">
+      <h3>Livro Dois de Muitos - Temporada 01</h3>
+      <img src="images/livro_01.jpg" alt="Livro Dois de Muitos">
+      <p>R$ 32,00</p>
+      <button class="button" onclick="adicionar('Livro Dois de Muitos - Temporada 01', 32)">Adicionar</button>
+    </div>
+    <div class="product">
+      <h3>Livreto 2dM: Chamado para o Alinhamento</h3>
+      <img src="images/livreto1.jpg" alt="Chamado para o Alinhamento">
+      <p>R$ 5,00</p>
+      <button class="button" onclick="adicionar('Chamado para o Alinhamento', 5)">Adicionar</button>
+    </div>
+    <div class="product">
+      <h3>Livreto 2dM: O Reflexo do Que Somos</h3>
+      <img src="images/livreto2.jpg" alt="Reflexo do Que Somos">
+      <p>R$ 5,00</p>
+      <button class="button" onclick="adicionar('O Reflexo do Que Somos', 5)">Adicionar</button>
+    </div>
+    <div class="product">
+      <h3>Livreto 2dM: Origem dos Povos e Trilhas</h3>
+      <img src="images/livreto3.jpg" alt="Origem dos Povos">
+      <p>R$ 5,00</p>
+      <button class="button" onclick="adicionar('Origem dos Povos e Trilhas', 5)">Adicionar</button>
+    </div>
+    <div class="product">
+      <h3>Caderneta de Bolso Borboleta</h3>
+      <img src="images/caderneta.jpg" alt="Caderneta Borboleta">
+      <p>R$ 12,00</p>
+      <button class="button" onclick="adicionar('Caderneta de Bolso Borboleta', 12)">Adicionar</button>
+    </div>
+    <div class="product">
+      <h3>Biofertilizante Orgânico</h3>
+      <img src="images/biofert.jpg" alt="Biofertilizante Orgânico">
+      <p>R$ 8,00</p>
+      <button class="button" onclick="adicionar('Biofertilizante Orgânico', 8)">Adicionar</button>
+    </div>
+    <div class="product">
+      <h3>Sabonete Aroeira Natural</h3>
+      <img src="images/aroeira.jpg" alt="Sabonete Aroeira">
+      <p>R$ 9,89</p>
+      <button class="button" onclick="adicionar('Sabonete Aroeira Natural', 9.89)">Adicionar</button>
+    </div>
+    <div class="product">
+      <h3>Sabonete Babosa Aloe Vera</h3>
+      <img src="images/babosa.jpg" alt="Sabonete Babosa">
+      <p>R$ 9,89</p>
+      <button class="button" onclick="adicionar('Sabonete Babosa Aloe Vera', 9.89)">Adicionar</button>
+    </div>
+    <div class="product">
+      <h3>Pomada Canela de Velho</h3>
+      <img src="images/pomada.jpg" alt="Pomada Canela de Velho">
+      <p>R$ 5,89</p>
+      <button class="button" onclick="adicionar('Pomada Canela de Velho', 5.89)">Adicionar</button>
+    </div>
+    <div class="product">
+      <h3>Xarope da Vovó</h3>
+      <img src="images/xarope.jpg" alt="Xarope da Vovó">
+      <p>R$ 13,90</p>
+      <button class="button" onclick="adicionar('Xarope da Vovó', 13.90)">Adicionar</button>
+    </div>
+    <div class="product">
+      <h3>Canela em Pau (100g)</h3>
+      <img src="images/canela.jpg" alt="Canela em Pau">
+      <p>R$ 9,90</p>
+      <button class="button" onclick="adicionar('Canela em Pau (100g)', 9.90)">Adicionar</button>
+    </div>
+  </div>
+
+  <div id="cesta">
+    <button class="button" onclick="visualizarCesta()">Visualizar Lista de Compras</button>
+    <p id="mensagem"></p>
+  </div>
+
+  <script>
+    const cesta = [];
+
+    function adicionar(nome, preco) {
+      cesta.push({ nome, preco });
+      alert(`${nome} adicionado à cesta.`);
+    }
+
+    function visualizarCesta() {
+      if (cesta.length === 0) {
+        alert('Sua cesta está vazia.');
+        return;
+      }
+
+      let mensagem = 'Sua lista de compras:\n';
+      let total = 0;
+      cesta.forEach(item => {
+        mensagem += `- ${item.nome}: R$ ${item.preco.toFixed(2)}\n`;
+        total += item.preco;
+      });
+      mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
+
+      const email = 'editifestviseu@gmail.com';
+      const assunto = encodeURIComponent('Lista de Compras');
+      const corpo = encodeURIComponent(mensagem);
+      window.location.href = `mailto:${email}?subject=${assunto}&body=${corpo}`;
+    }
+  </script>
+</body>
+</html>
